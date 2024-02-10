@@ -1,0 +1,33 @@
+version: "3.3"
+
+services:
+
+  ws:
+    build: .
+    volumes:
+      - ./src:/usr/src/app/
+    ports:
+      - "8003:8000"
+    environment:
+      WERKZEUG_DEBUG_PIN: "off"
+      SENDER_MAIL: ${MAIL_SENDER_ADDRESS}
+      SENDER_PASS: ${MAIL_SENDER_PASSWORD}
+      SNAS_DB_HOST: ${DB_HOST}
+      SNAS_DB_NAME: ${DB_NAME}
+      SNAS_DB_USER: ${DB_USER}
+      SNAS_DB_PASS: ${DB_PASS}
+      SNAS_ENVIRONMENT: ${ENVIRONMENT}
+
+   #db:
+   #   image: mariadb
+   # environment:
+   #   MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+   #   MYSQL_DATABASE: ${DB_NAME}
+   #   MYSQL_USER: ${DB_USER}
+   #   MYSQL_PASSWORD: ${DB_PASS}
+   # volumes:
+   #   - ./scripts_db:/docker-entrypoint-initdb.d
+   #   - snas-control-db-data:/var/lib/mysql
+
+volumes:
+  snas-control-db-data:

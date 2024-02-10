@@ -1,0 +1,8 @@
+Flask
+python-dotenv
+Jinja2
+Click
+itsdangerous
+MarkupSafe
+mysql-connector-python
+SQLAlchemy
