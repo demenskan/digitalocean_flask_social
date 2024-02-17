@@ -5,4 +5,4 @@ WORKDIR /usr/src/app
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT python app.py
+ENTRYPOINT python __init__.py
