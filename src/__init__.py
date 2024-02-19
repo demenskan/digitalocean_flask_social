@@ -1,12 +1,15 @@
 from flask import Flask
-
+from extensions import db
 from config import Config
 
+# Factory function
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
     #app.config.from_object(Config)
+
     # Initialize Flask extensions here
+    db.init_app(app)
 
     # Register blueprints here
     from main import bp as main_bp
@@ -14,6 +17,9 @@ def create_app(config_class=Config):
 
     from posts import bp as posts_bp
     app.register_blueprint(posts_bp, url_prefix='/posts')
+
+    from questions import bp as questions_bp
+    app.register_blueprint(questions_bp, url_prefix='/questions')
 
     @app.route('/test/')
     def test_page():
