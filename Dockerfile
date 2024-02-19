@@ -3,10 +3,13 @@ FROM python:3-alpine
 COPY /src /usr/src/app
 WORKDIR /usr/src/app
 
-RUN apt-get update && apt-get install -y \
-        libmariadb3 \
-        libmariadb-dev \
-        mariadb-client
+RUN apk update && apk add \
+        mariadb-client \
+        mariadb-dev \
+        mariadb-connector-c \
+        gcc \
+        gcompat \
+        musl-dev
 
 RUN pip install -r requirements.txt
 
