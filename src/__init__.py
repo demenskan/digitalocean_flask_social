@@ -21,6 +21,11 @@ def create_app(config_class=Config):
     from questions import bp as questions_bp
     app.register_blueprint(questions_bp, url_prefix='/questions')
 
+    @app.route('/create/')
+    def create_skeleton():
+        db.create_all()
+        return '<h1>initial migration...</h1>'
+
     @app.route('/test/')
     def test_page():
         return '<h1>testing the flask application factory pattern</h1>'
