@@ -18,6 +18,7 @@ services:
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASS}
     volumes:
+      - ./scripts_db:/docker-entrypoint-initdb.d
       - do-flask-social-data:/var/lib/mysql
 
 volumes:

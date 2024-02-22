@@ -24,7 +24,7 @@ def create_app(config_class=Config):
     @app.route('/create/')
     def create_skeleton():
         db.create_all()
-        return '<h1>initial migration...</h1>'
+        return '<h1>initial migration... db:</h1>' + str(db)
 
     @app.route('/test/')
     def test_page():
